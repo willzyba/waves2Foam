@@ -1,3 +1,15 @@
+===== FORK =====
+
+This version is a minor modification to the main WaveFOAM branch, which is adapted so it compiles with v7 of OpenFOAM from the OpenFOAM Founcation (www.openfoam.org). 
+
+Key changes include:
+  - Implementing new writeEnty funnction which replace class function call writeEntry
+  - Migrated the latest copy of InterFOAM into WaveFOAM
+  - Fixed various compiler warnings due to files variables being declared in the wrong order
+
+Also working on adding Particle tracking and fixing the wave gauges.
+
+
 ===== INSTALLATION =====
 
 1. Make sure that Gnu Scientific Library is installed, e.g. using the Package Manager system
