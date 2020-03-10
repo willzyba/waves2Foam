@@ -60,14 +60,6 @@ private:
     volVectorField& U_;
     volScalarField& alpha_;
 
-    wordList relaxNames_;
-
-    List<autoPtr<relaxationSchemes::relaxationScheme> > relaxSchemePtr_;
-
-    void resetTargetFields();
-
-    void correctBoundaries();
-
 protected:
 
     mutable volScalarField* relaxationWeightsMomentum_;
@@ -77,6 +69,16 @@ protected:
     mutable volScalarField* targetAlpha_;
 
     mutable volVectorField* targetVelocity_;
+
+private:
+
+    wordList relaxNames_;
+
+    List<autoPtr<relaxationSchemes::relaxationScheme> > relaxSchemePtr_;
+
+    void resetTargetFields();
+
+    void correctBoundaries();
 
 public:
      //- Runtime type information

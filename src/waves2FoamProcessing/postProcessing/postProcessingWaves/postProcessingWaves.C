@@ -67,7 +67,7 @@ void postProcessingWaves::getTimeDirs
     {
         // Get the time directories
         fileNameList fnl =
-            Foam::readDir( inputDir, Foam::fileName::DIRECTORY );
+            Foam::readDir( inputDir, Foam::fileType::directory );
 
         timeDirs.setSize( fnl.size() );
 
@@ -300,7 +300,8 @@ word postProcessingWaves::dataType()
         fileHeader.typeHeaderOk<volScalarField>(false);
     #endif
 #else
-    if (!fileHeader.headerOk())
+    //if (!fileHeader.headerOk())
+    if(fileHeader.typeHeaderOk<labelIOList>(true))
     {
     }
 #endif

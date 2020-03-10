@@ -125,7 +125,7 @@ void write2Ascii::evaluate()
         }
     #endif
 #else
-        if (!fileHeader.headerOk())
+        if (!fileHeader.typeHeaderOk<labelIOList>(true))
         {
             break;
         }

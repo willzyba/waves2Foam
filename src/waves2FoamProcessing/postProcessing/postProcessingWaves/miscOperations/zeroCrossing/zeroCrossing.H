@@ -61,12 +61,14 @@ class zeroCrossing
 protected:
 
     // Protected data
+        word crossingType_;
+
         IOdictionary dataDict_;
 
         labelList indices_;
         scalar deltaT_;
 
-        word crossingType_;
+
 
     // Protected member functions
 

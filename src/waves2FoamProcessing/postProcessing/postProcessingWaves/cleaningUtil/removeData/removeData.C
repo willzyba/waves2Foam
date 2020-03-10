@@ -116,7 +116,8 @@ void removeData::evaluate()
     {
         Info << "        - Removing data in ascii format" << endl;
 
-        fileNameList fnl = Foam::readDir( fn, Foam::fileName::FILE);
+//        fileNameList fnl = Foam::readDir( fn, Foam::fileName::FILE);
+        fileNameList fnl = Foam::readDir( fn, Foam::fileType::file);
 
         forAll (fnl, fi)
         {

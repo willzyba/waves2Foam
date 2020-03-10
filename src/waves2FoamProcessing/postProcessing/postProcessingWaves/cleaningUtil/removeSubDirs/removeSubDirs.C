@@ -67,7 +67,7 @@ void removeSubDirs::evaluate()
 {
     fileName fn( directDir_ );
 
-    Foam::fileNameList fnl = Foam::readDir( fn, Foam::fileName::DIRECTORY);
+    Foam::fileNameList fnl = Foam::readDir( fn, Foam::fileType::directory);
 
     forAll (fnl, i)
     {
