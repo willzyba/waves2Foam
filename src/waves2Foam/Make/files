@@ -33,6 +33,10 @@ $(waveTheories)/$(regular)/stokesSecond/stokesSecond.C
 $(waveTheories)/$(regular)/stokesSecondModulation/stokesSecondModulation.C
 $(waveTheories)/$(regular)/stokesFifth/stokesFifth.C
 
+/* Added by CCell */
+$(waveTheories)/$(regular)/stokesICurrent/stokesICurrent.C
+$(waveTheories)/$(regular)/stokesICurrentU2/stokesICurrentU2.C
+
 /* Cnoidal Theory */
 $(waveTheories)/$(regular)/cnoidalFirst/cnoidalFirst.C
 
