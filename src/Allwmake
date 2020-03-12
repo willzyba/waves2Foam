@@ -62,7 +62,7 @@ else
     then
         (cd waves2FoamSampling  ; wmake libso)
     else
-	(cd waves2FoamSamplingNew ; wmake libso)
+	(cd waves2FoamSamplingNew  ; wmake libso)
     fi
 fi
 

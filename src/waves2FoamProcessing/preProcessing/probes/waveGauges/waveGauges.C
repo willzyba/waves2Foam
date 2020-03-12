@@ -120,7 +120,7 @@ void waveGauges::evaluate(const word& name)
     {
         gauges() << indent << "gauge_" << pointi << nl << indent
                  << token::BEGIN_BLOCK << incrIndent << nl;
-        gauges() << indent << "type         face"
+        gauges() << indent << "type         lineFace"
                  << token::END_STATEMENT << nl;
         gauges() << indent << "axis         " << vertAxis
                  << token::END_STATEMENT << nl;
@@ -142,7 +142,7 @@ void waveGauges::evaluate(const word& name)
     gauges() << indent << "type               surfaceElevation;" << nl;
     gauges() << nl;
 #if OFPLUSBRANCH==1 && 1606<OFVERSION && OFVERSION < 1812
-    gauges() << indent << "functionObjectLibs ( \"libwaves2Foam.so\" );" << nl;
+    gauges() << indent << "functionObjectLibs ( \"libwaves2FoamSampling.so\" );" << nl;
 
     word wc(gaugeDict_.lookup("writeControl"));
     scalar wi = readScalar(gaugeDict_.lookup("writeInterval"));
@@ -150,7 +150,7 @@ void waveGauges::evaluate(const word& name)
     gauges() << indent << "writeControl       " << wc << ";" << nl;
     gauges() << indent << "writeInterval      " << wi << ";" << nl;
 #elif OFPLUSBRANCH==1 && 1806<OFVERSION
-    gauges() << indent << "libs ( \"libwaves2Foam.so\" );" << nl;
+    gauges() << indent << "libs ( \"libwaves2FoamSampling.so\" );" << nl;
 
     word wc(gaugeDict_.lookup("writeControl"));
     scalar wi = readScalar(gaugeDict_.lookup("writeInterval"));
@@ -158,14 +158,20 @@ void waveGauges::evaluate(const word& name)
     gauges() << indent << "writeControl       " << wc << ";" << nl;
     gauges() << indent << "writeInterval      " << wi << ";" << nl;
 #else
-    gauges() << indent << "functionObjectLibs ( \"libwaves2Foam.so\" );" << nl;
+    // CCell: This is what OpenFOAM v7 would use
+    gauges() << indent << "functionObjectLibs ( \"libwaves2FoamSampling.so\" );" << nl;
 
-    gauges() << indent << "outputControl      timeStep;"
-             << " // Alternative: outputTime" << nl;
-    gauges() << indent << "outputInterval      1;" << nl << nl;
-    gauges() << indent << "//Additional output controls in waves2Foam" << nl;
-    gauges() << indent << "//samplingStartTime  -1;" << nl;
-    gauges() << indent << "//surfaceSampleDeltaT 0.025;" << nl;
+    word wc(gaugeDict_.lookup("writeControl"));
+    scalar wi = readScalar(gaugeDict_.lookup("writeInterval"));
+
+    gauges() << indent << "writeControl       " << wc << ";" << nl;
+    gauges() << indent << "writeInterval      " << wi << ";" << nl;
+
+//    gauges() << indent << "writeControl      timeStep;" << nl;
+//    gauges() << indent << "writeInterval      1;" << nl << nl;
+//    gauges() << indent << "//Additional output controls in waves2Foam" << nl;
+//    gauges() << indent << "//samplingStartTime  -1;" << nl;
+//    gauges() << indent << "//surfaceSampleDeltaT 0.025;" << nl;
 #endif
     gauges() << nl;
     gauges() << indent << "setFormat          raw;" << nl;
